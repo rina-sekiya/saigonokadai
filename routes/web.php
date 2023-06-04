@@ -20,9 +20,13 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/item/{id}', [App\Http\Controllers\ItemController::class, 'delete'])->name('delete');
+Route::get('/item/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit']);
+Route::get('/items/search', [App\Http\Controllers\ItemController::class, 'search'])->name('search');
 
 Route::prefix('items')->group(function () {
     Route::get('/', [App\Http\Controllers\ItemController::class, 'index']);
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
 });
+

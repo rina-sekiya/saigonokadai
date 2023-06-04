@@ -6,6 +6,7 @@
     <h1>商品一覧</h1>
 @stop
 
+
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -20,14 +21,25 @@
                         </div>
                     </div>
                 </div>
+
+ <!-- 検索フォーム -->              
+<form action="{{ route('search') }}" method="GET">
+
+    <input type="text" name="keyword">
+    <input type="submit" value="検索">
+  </form>
+            
+
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>名前</th>
-                                <th>種別</th>
+                                <th>在庫数</th>
                                 <th>詳細</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,6 +49,8 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->detail }}</td>
+                                    <td><a href="/item/edit/{{$item->id}}" class="btn btn-info"> 入庫・出庫</td>
+                                    <td><form method='POST' action="{{route('delete',$item->id)}}">@csrf<button type ="submit" onclick='return confirm("本当に削除しますか？")' class="btn btn-danger"> >>削除</button></form></td>
                                 </tr>
                             @endforeach
                         </tbody>

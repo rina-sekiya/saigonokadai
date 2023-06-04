@@ -57,4 +57,34 @@ class ItemController extends Controller
 
         return view('item.add');
     }
+    public function delete($id){
+        Item::find($id)->delete();
+        return redirect('/items')->with('message','削除しました。');
+    }
+
+    public function edit(Request $request)
+    {
+        $item=Item::find($request->id);
+        return view('item.edit',[
+            'item' =>$item,
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+         /* テーブルから全てのレコードを取得する */
+           $query = Item::query();
+
+        /* キーワードから検索処理 */
+        $keyword = $request->input('keyword');
+        if(!empty($keyword)) {//$keyword　が空ではない場合、検索処理を実行
+            $query->where('name', 'LIKE', "%{$keyword}%")
+            ->orwhere('detail', 'LIKE', "%{$keyword}%");
+        }
+        $items = $query->paginate(5);
+
+
+        return view('item.index')->with('items',$items)->with('keyword',$keyword);
+    }
+
 }
