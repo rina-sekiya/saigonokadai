@@ -26,7 +26,7 @@
 <form action="{{ route('search') }}" method="GET">
 
     <input type="text" name="keyword">
-    <input type="submit" value="検索">
+    <input type="submit" class="btn btn-light" value="検索">
   </form>
             
 
@@ -47,7 +47,7 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->detail }}</td>
-                                    <td><a href="/item/edit/{{$item->id}}" class="btn btn-info"> 入庫・出庫</td>
+                                    <td><a href="/item/edit/{{$item->id}}" class="btn btn-info"> 在庫管理</td>
                                     <td><form method='POST' action="{{route('delete',$item->id)}}">@csrf<button type ="submit" onclick='return confirm("本当に削除しますか？")' class="btn btn-danger"> >>削除</button></form></td>
                                 </tr>
                             @endforeach

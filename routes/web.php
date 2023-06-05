@@ -23,6 +23,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::post('/item/{id}', [App\Http\Controllers\ItemController::class, 'delete'])->name('delete');
 Route::get('/item/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit']);
 Route::get('/items/search', [App\Http\Controllers\ItemController::class, 'search'])->name('search');
+Route::post('/item/edit/{id}', [App\Http\Controllers\ItemController::class, 'update'])->name('item.update');
+
 
 Route::prefix('items')->group(function () {
     Route::get('/', [App\Http\Controllers\ItemController::class, 'index']);

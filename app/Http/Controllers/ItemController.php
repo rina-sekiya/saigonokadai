@@ -86,5 +86,23 @@ class ItemController extends Controller
 
         return view('item.index')->with('items',$items)->with('keyword',$keyword);
     }
+    
+    public function update(Request $request){
+        //バリデーション
+        $request->validate([
+            'name' => ['required'],
+            'type' => ['required', 'integer', 'min:0'],
+        ]);
+
+        //データを更新 
+        //dd($request);
+        $item=Item::find($request->id);
+        $item->name =$request->name;
+        $item->type =$request->type;
+        $item->detail =$request->detail;
+        $item->save();
+
+        return redirect('/items');
+    }
 
 }
