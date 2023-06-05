@@ -29,8 +29,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="type">種別</label>
-                            <input type="number" class="form-control" id="type" name="type" placeholder="1, 2, 3, ...">
+                            <label for="type">在庫数</label>
+                            <input type="number" class="form-control" id="type" name="type" placeholder="1以上の数を入力">
                         </div>
 
                         <div class="form-group">
