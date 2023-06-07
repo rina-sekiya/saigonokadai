@@ -30,7 +30,7 @@
 
                         <div class="form-group">
                             <label for="type">在庫数</label>
-                            <input type="number" class="form-control" id="type" name="type" placeholder="1以上の数を入力">
+                            <input type="number" class="form-control" id="type" name="type" placeholder="0以上の数を入力">
                         </div>
 
                         <div class="form-group">
